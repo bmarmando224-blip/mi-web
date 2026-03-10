@@ -1,0 +1,16 @@
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tail" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4cc9ff" stop-opacity="0"></stop>
+      <stop offset="40%" stop-color="#4cc9ff" stop-opacity="0.4"></stop>
+      <stop offset="80%" stop-color="#bfefff" stop-opacity="0.8"></stop>
+      <stop offset="100%" stop-color="#ffffff"></stop>
+    </linearGradient>
+
+    <filter id="glow" x="-200%" y="-200%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+    </filter>
+  </defs>
+
+  <ellipse cx="450" cy="250" rx="380" ry="35" fill="url(#tail)" filter="url(#glow)" transform="rotate(-10 450 250)"></ellipse>
+</svg>

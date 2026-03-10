@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 500" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5fbf6b"></stop>
+      <stop offset="100%" stop-color="#2f6b3a"></stop>
+    </linearGradient>
+  </defs>
+
+  <path d="
+    M100 470
+    C95 380 110 250 100 40" stroke="url(#stemGrad)" stroke-width="8" stroke-linecap="round" fill="none"></path>
+
+</svg>

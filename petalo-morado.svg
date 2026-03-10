@@ -1,0 +1,15 @@
+<svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradMorado" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#efe6ff"></stop>
+      <stop offset="60%" stop-color="#b388ff"></stop>
+      <stop offset="100%" stop-color="#5e35b1"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- pétalo -->
+  <path d="M60 10
+       C30 40, 20 80, 35 120
+       C45 145, 75 145, 85 120
+       C100 80, 90 40, 60 10 Z" fill="url(#gradMorado)"></path>
+</svg>

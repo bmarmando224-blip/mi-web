@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI ARTE EXE</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .petal {
+            transition: transform 0.6s ease;
+        }
+
+        .tulipan.open .left {
+            transform: rotate(-25deg);
+        }
+
+        .tulipan.open .right {
+            transform: rotate(25deg);
+        }
+
+        .tulipan.open .center {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="inicio">
+    <h2>🌷 Para ti 🌷</h2>
+    <p>Toca el botón para iniciar</p>
+    <button id="btnIniciar">Inicia</button>
+</div>
+
+<!-- 🎵 Música -->
+<audio id="musica" loop>
+    <source src="musica .mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎛 Botón -->
+<button id="btnMusica">🎵</button>
+
+<!-- 🌫 Partículas -->
+<div id="contenedorParticulas"></div>
+
+<h1 class="title">
+    <span>T</span>
+    <span>.</span>
+    <span>A</span>
+    <span>&nbsp;</span>
+    <span>3</span>
+    <span>.</span>
+    <span>M</span>
+</h1>
+
+<div class="ambient-shadow"></div>
+<div class="light-beam"></div>
+<div class="light-source"></div>
+
+
+<div class="cristal">
+    <div class="base"></div>
+</div>
+
+<div id="ramo">
+    
+
+    <div class="tallos">
+    
+
+        <!-- TULIPANES -->
+        <!-- (tu estructura original intacta) -->
+
+        <!-- 🌷 1 -->
+        <div class="tallo t1">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                    <div class="tulipan amarillo">
+                        <img src="petalo-amarillo.svg" class="petal left">
+                        <img src="petalo-amarillo.svg" class="petal center">
+                        <img src="petalo-amarillo.svg" class="petal right">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 🌷 2 -->
+        <div class="tallo t2">
+            <div class="movimiento">
+                <div class="crecer">
+            <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 3 -->
+        <div class="tallo t3">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan celeste">
+                    <img src="petalo-celeste.svg" class="petal left">
+                    <img src="petalo-celeste.svg" class="petal center">
+                    <img src="petalo-celeste.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 4 -->
+        <div class="tallo t4">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan morado">
+                    <img src="petalo-morado.svg" class="petal left">
+                    <img src="petalo-morado.svg" class="petal center">
+                    <img src="petalo-morado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 5 -->
+        <div class="tallo t5">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan amarillo">
+                    <img src="petalo-amarillo.svg" class="petal left">
+                    <img src="petalo-amarillo.svg" class="petal center">
+                    <img src="petalo-amarillo.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 6 -->
+        <div class="tallo t6">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 7 -->
+        <div class="tallo t7">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan celeste">
+                    <img src="petalo-celeste.svg" class="petal left">
+                    <img src="petalo-celeste.svg" class="petal center">
+                    <img src="petalo-celeste.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 8 -->
+        <div class="tallo t8">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan morado">
+                    <img src="petalo-morado.svg" class="petal left">
+                    <img src="petalo-morado.svg" class="petal center">
+                    <img src="petalo-morado.svg" class="petal right">
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+
+        <!-- 🌷 9 -->
+        <div class="tallo t9">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan amarillo">
+                    <img src="petalo-amarillo.svg" class="petal left">
+                    <img src="petalo-amarillo.svg" class="petal center">
+                    <img src="petalo-amarillo.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 10 -->
+        <div class="tallo t10">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 11 -->
+        <div class="tallo t11">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan celeste">
+                    <img src="petalo-celeste.svg" class="petal left">
+                    <img src="petalo-celeste.svg" class="petal center">
+                    <img src="petalo-celeste.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 12 -->
+        <div class="tallo t12">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan morado">
+                    <img src="petalo-morado.svg" class="petal left">
+                    <img src="petalo-morado.svg" class="petal center">
+                    <img src="petalo-morado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+ 
+
+        <!-- 🌷 13 -->
+        <div class="tallo t13">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan amarillo">
+                    <img src="petalo-amarillo.svg" class="petal left">
+                    <img src="petalo-amarillo.svg" class="petal center">
+                    <img src="petalo-amarillo.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 14 -->
+        <div class="tallo t14">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 15 -->
+        <div class="tallo t15">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan celeste">
+                    <img src="petalo-celeste.svg" class="petal left">
+                    <img src="petalo-celeste.svg" class="petal center">
+                    <img src="petalo-celeste.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 16 -->
+        <div class="tallo t16">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan morado">
+                    <img src="petalo-morado.svg" class="petal left">
+                    <img src="petalo-morado.svg" class="petal center">
+                    <img src="petalo-morado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 17 -->
+        <div class="tallo t17">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 18 -->
+        <div class="tallo t18">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan amarillo">
+                    <img src="petalo-amarillo.svg" class="petal left">
+                    <img src="petalo-amarillo.svg" class="petal center">
+                    <img src="petalo-amarillo.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 19 -->
+        <div class="tallo t19">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan celeste">
+                    <img src="petalo-celeste.svg" class="petal left">
+                    <img src="petalo-celeste.svg" class="petal center">
+                    <img src="petalo-celeste.svg" class="petal right">
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- 🌷 20 -->
+        <div class="tallo t20">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan morado">
+                    <img src="petalo-morado.svg" class="petal left">
+                    <img src="petalo-morado.svg" class="petal center">
+                    <img src="petalo-morado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 21 -->
+        <div class="tallo t21">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 22 -->
+        <div class="tallo t22">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan amarillo">
+                    <img src="petalo-amarillo.svg" class="petal left">
+                    <img src="petalo-amarillo.svg" class="petal center">
+                    <img src="petalo-amarillo.svg" class="petal right">
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- 🌷 23 -->
+        <div class="tallo t23">
+            <div class="movimiento">
+                <div class="crecer">
+                <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 24 -->
+        <div class="tallo t24">
+            <div class="movimiento">
+                <div class="crecer">
+            <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan morado">
+                    <img src="petalo-morado.svg" class="petal left">
+                    <img src="petalo-morado.svg" class="petal center">
+                    <img src="petalo-morado.svg" class="petal right">
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🌷 25 (nuevo) -->
+        <div class="tallo t25">
+            <div class="movimiento">
+                <div class="crecer">
+            <img src="tallo.svg" class="tallo-img">
+                <div class="tulipan rosado">
+                    <img src="petalo-rosado.svg" class="petal left">
+                    <img src="petalo-rosado.svg" class="petal center">
+                    <img src="petalo-rosado.svg" class="petal right">
+                </div>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hojas-ramo">
+    <img src="hoja.svg" class="hoja-centro h1">
+    <img src="hoja.svg" class="hoja-centro h2">
+    <img src="hoja.svg" class="hoja-centro h3">
+    <img src="hoja.svg" class="hoja-centro h4">
+    <img src="hoja.svg" class="hoja-centro h5">
+    <img src="hoja.svg" class="hoja-centro h6">
+    <img src="hoja.svg" class="hoja-centro h7">
+    <img src="hoja.svg" class="hoja-centro h8">
+    <img src="hoja.svg" class="hoja-centro h9">
+    <img src="hoja.svg" class="hoja-centro h10">
+    <img src="hoja.svg" class="hoja-centro h11">
+    <img src="hoja.svg" class="hoja-centro h12">
+
+</div>
+
+
+    <div class="lazo">
+    <img src="lazo.svg">
+</div>
+
+</div> 
+
+<div class="cometas"></div>
+
+
+
+<!-- 🎬 SCRIPT ÚNICO LIMPIO -->
+<script>
+const musica = document.getElementById("musica");
+const btnMusica = document.getElementById("btnMusica");
+const tulipanes = document.querySelectorAll(".tulipan");
+const cristal = document.querySelector(".cristal");
+const contenedor = document.getElementById("contenedorParticulas");
+
+let reproduciendo = false;
+
+// 🎵 Música + efectos
+btnMusica.addEventListener("click", () => {
+    if (!reproduciendo) {
+        musica.play();
+        btnMusica.innerHTML = "⏸";
+        cristal.classList.add("brillo");
+        document.body.classList.add("particulas-on");
+        reproduciendo = true;
+    } else {
+        musica.pause();
+        btnMusica.innerHTML = "🎵";
+        cristal.classList.remove("brillo");
+        document.body.classList.remove("particulas-on");
+        reproduciendo = false;
+    }
+});
+
+// 🌸 Click individual
+tulipanes.forEach(t => {
+    t.addEventListener("click", () => {
+        t.classList.toggle("open");
+    });
+});
+
+// 🌫 Crear partículas
+for (let i = 0; i < 25; i++) {
+    let p = document.createElement("div");
+    p.classList.add("particula");
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDelay = Math.random() * 8 + "s";
+    contenedor.appendChild(p);
+}
+
+const capaCometas = document.querySelector(".cometas");
+
+function crearCometa() {
+
+    const cometa = document.createElement("div");
+    cometa.classList.add("cometa-real");
+
+    // posición vertical distinta
+    const startY = Math.random() * window.innerHeight * 0.7;
+    cometa.style.top = startY + "px";
+
+    capaCometas.appendChild(cometa);
+
+    let startTime = null;
+
+    const duracion = 5 + Math.random() * 2; // lento
+    const maxLargo = 12; // no muy largo
+
+    function animar(timestamp){
+        if(!startTime) startTime = timestamp;
+        const progreso = (timestamp - startTime) / (duracion * 1000);
+
+        if(progreso < 1){
+
+            // movimiento horizontal
+            const x = progreso * (window.innerWidth + 200);
+
+            // caída suave diagonal
+            const y = startY + progreso * 160;
+
+            // ✨ crecer progresivamente
+            const largoActual = progreso * maxLargo;
+            cometa.style.width = largoActual + "px";
+
+            cometa.style.transform = `translate(${x}px, ${y}px) rotate(18deg)`;
+
+            requestAnimationFrame(animar);
+        } else {
+            cometa.remove();
+        }
+    }
+
+    requestAnimationFrame(animar);
+}
+
+// lanzar 3 al mismo tiempo cada cierto tiempo
+function lanzarGrupo(){
+    for(let i = 0; i < 6; i++){
+        setTimeout(() => {
+            crearCometa();
+        }, i * 150); // pequeño desfase natural
+    }
+}
+
+setInterval(lanzarGrupo, 2500);
+
+const btnIniciar = document.getElementById("btnIniciar");
+const inicio = document.getElementById("inicio");
+
+btnIniciar.addEventListener("click", () => {
+    document.body.classList.add("iniciado");
+    inicio.style.opacity = "0";
+
+    setTimeout(() => {
+        inicio.remove();
+    }, 800);
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,860 @@
+
+/* =========================
+   ESTILOS GENERALES
+========================= */
+body {
+    background: #050505;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    perspective: 1000px;
+
+}
+
+/* ⛔ PAUSAR TODO HASTA DAR "INICIA" */
+body:not(.iniciado) * {
+    animation-play-state: paused !important;
+}
+
+/* Galaxia solo mitad superior */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("galaxia.svg") top center / cover no-repeat;
+    z-index: -1;
+    pointer-events: none;
+}
+
+img {
+    user-select: none;
+    pointer-events: none;
+    display: block;
+}
+
+
+#inicio{
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+
+    color: white;
+    font-family: inherit;
+    text-align: center;
+}
+
+#inicio h2{
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+#inicio p{
+    opacity: .8;
+    margin-bottom: 25px;
+}
+
+#inicio button{
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+
+    background: #ff5fa2;
+    color: white;
+    box-shadow: 0 0 20px rgba(255,95,162,.6);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+#inicio button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255,95,162,.9);
+}
+
+/* =========================
+   TÍTULO
+========================= */
+.title {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 6px;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.title span {
+    display:inline-block;
+    opacity:0;
+    transform:translateY(30px) scale(0.8);
+    background: linear-gradient(90deg,#ff2f92,#ff7ac6,#ff2f92);
+    background-size:200% auto;
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+    animation:
+        letterAppear .6s forwards,
+        shine 4s linear infinite,
+        cambioColor 8s ease-in-out infinite;
+}
+@keyframes shine {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+
+/* =========================
+   AMBIENTE
+========================= */
+.ambient-shadow {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 30%, transparent, rgba(0,0,0,.85));
+    z-index: 0;
+}
+
+.light-source {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+    filter: blur(15px);
+    box-shadow: 0 0 60px 30px rgba(255,255,255,.2);
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseLight 8s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes pulseLight {
+    0%   { opacity:.5; transform:translate(-50%,-50%) scale(.9); }
+    50%  { opacity:.7; transform:translate(-50%,-50%) scale(1.1); }
+    100% { opacity:.5; transform:translate(-50%,-50%) scale(.9); }
+}
+
+.light-beam {
+    position: absolute;
+    width: 500px;
+    height: 800px;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,.04), transparent 70%);
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(10px);
+    z-index: 0;
+}
+
+/* =========================
+   CRISTAL
+========================= */
+.cristal {
+    position: absolute;
+    left: calc(50vw - 150px);
+    top: 170px;
+    width: 300px;
+    height: 650px;
+    border-radius: 200px 200px 50px 50px;
+    border: 1px solid rgba(255,255,255,.3);
+    box-shadow:
+        inset 0 0 50px rgba(255,255,255,.1),
+        0 0 15px rgba(255,255,255,.05);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cristal::before{
+    content:"";
+    position:absolute;
+    top:60px;
+    left:30px;
+    width:80px;
+    height:300px;
+    background:linear-gradient(
+        to bottom,
+        rgba(255,255,255,.25),
+        rgba(255,255,255,.05),
+        transparent
+    );
+    border-radius:100px;
+    filter:blur(4px);
+}
+
+.base {
+    position: absolute;
+    width: 320px;
+    height: 30px;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(50,50,50,.8), rgba(20,20,20,.9));
+}
+
+/* =========================
+   🌱 RAMO
+========================= */
+#ramo{
+    position:absolute;
+    bottom:20px; /* antes 80px */
+    left:50%;
+    transform:translateX(-65%);
+    width:300px;
+    height:300px;
+    z-index:3;
+}
+
+
+/* =========================
+   🌿 RAMO (BASE UNIFICADA)
+========================= */
+.tallos{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* Todos nacen del mismo punto */
+.tallo{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform-origin:bottom center;
+}
+
+
+/* =========================
+   PROFUNDIDAD (DELANTE / ATRÁS)
+========================= */
+
+
+/* Tallos ALTOS → atrás */
+.tallo.t3, .tallo.t7, .tallo.t9, .tallo.t13,
+.tallo.t17, .tallo.t20, .tallo.t25 {
+    z-index: 1;
+}
+
+/* Tallos MEDIOS */
+.tallo.t1, .tallo.t5, .tallo.t11, .tallo.t15,
+.tallo.t18, .tallo.t21 { z-index: 3; }
+
+/* Tallos BAJOS → adelante */
+.tallo.t2, .tallo.t4, .tallo.t6, .tallo.t8,
+.tallo.t10, .tallo.t12, .tallo.t14, .tallo.t16,
+.tallo.t19, .tallo.t22 { z-index: 5; }
+/* =========================
+   TALLOS
+========================= */
+
+.tallo-img {
+    height: 160px;
+    display: block;
+    margin: 0 auto;
+
+    position: relative;
+    z-index: 1;   /* el tallo queda atrás */
+    
+}
+
+/* Alturas diferentes para cada tallo */
+
+/* Alturas diferentes para cada tallo */
+
+.t1  .tallo-img { height:300px; }
+.t2  .tallo-img { height:260px; }
+.t3  .tallo-img { height:320px; }
+.t4  .tallo-img { height:240px; }
+.t5  .tallo-img { height:280px; }
+.t6  .tallo-img { height:220px; }
+.t7  .tallo-img { height:270px; }
+.t8  .tallo-img { height:250px; }
+
+/* Nuevos tallos */
+.t9  .tallo-img { height:310px; }
+.t10 .tallo-img { height:230px; }
+.t11 .tallo-img { height:290px; }
+.t12 .tallo-img { height:260px; }
+.t13 .tallo-img { height:300px; }
+.t14 .tallo-img { height:240px; }
+.t15 .tallo-img { height:280px; }
+.t16 .tallo-img { height:220px; }
+
+/* 🌿 Nuevos tulipanes lado izquierdo */
+.t17 .tallo-img { height: 285px; }
+.t18 .tallo-img { height: 265px; }
+.t19 .tallo-img { height: 295px; }
+
+/* 🌿 Nuevos tulipanes lado derecho */
+.t20 .tallo-img { height: 275px; }
+.t21 .tallo-img { height: 255px; }
+.t22 .tallo-img { height: 290px; }
+/* 🌿 Nuevos tallos extra */
+.t23 .tallo-img { height: 245px; }
+.t24 .tallo-img { height: 265px; }
+
+.t25 .tallo-img {
+    height: 255px;      /* tallo igual al estilo del hueco */
+}
+
+
+
+/* =========================
+   POSICION RAMO (RAMO DE REGALO)
+========================= */
+.t1  { transform: translateX(-20px) rotate(-16deg); z-index:1; }
+.t2  { transform: translateX(-17px) rotate(-14deg); z-index:2; }
+.t3  { transform: translateX(-14px) rotate(-12deg); z-index:3; }
+.t4  { transform: translateX(-11px) rotate(-9deg);  z-index:4; }
+.t5  { transform: translateX(-8px)  rotate(-7deg);  z-index:5; }
+.t6  { transform: translateX(-5px)  rotate(-5deg);  z-index:6; }
+.t7  { transform: translateX(-2px)  rotate(-2deg);  z-index:7; }
+.t8  { transform: translateX(0px)   rotate(0deg);   z-index:8; }
+
+/* Derecha corregida (antes llegaba a +41px, ahora máximo +20px) */
+.t9  { transform: translateX(2px)   rotate(2deg);  z-index:8; }
+.t10 { transform: translateX(5px)   rotate(5deg);  z-index:7; }
+.t11 { transform: translateX(8px)   rotate(7deg);  z-index:6; }
+.t12 { transform: translateX(11px)  rotate(9deg);  z-index:5; }
+.t13 { transform: translateX(14px)  rotate(12deg); z-index:4; }
+.t14 { transform: translateX(16px)  rotate(14deg); z-index:3; }
+.t15 { transform: translateX(18px)  rotate(16deg); z-index:2; }
+.t16 { transform: translateX(20px)  rotate(18deg); z-index:1; }
+
+/* Mantengo progresión natural pero sin pasarte del lado derecho */
+.t17 { transform: translateX(18px) rotate(20deg); z-index:1; }
+.t18 { transform: translateX(16px) rotate(22deg); z-index:1; }
+.t19 { transform: translateX(14px) rotate(24deg); z-index:1; }
+.t20 { transform: translateX(11px) rotate(26deg); z-index:1; }
+.t21 { transform: translateX(8px)  rotate(28deg); z-index:1; }
+.t22 { transform: translateX(5px)  rotate(30deg); z-index:1; }
+
+/* 🌷 POSICIÓN corregida */
+.t23 { 
+    transform: translateX(-34px) rotate(-20deg); 
+    z-index: 2;
+}
+.t24 { 
+    transform: translateX(-28px) rotate(-15deg);  
+    z-index: 3;
+}
+
+/* 🌷 Flor nueva t25 */
+.t25 {
+    left: 46%;
+    transform: translateX(-50%) rotate(-12deg);
+}
+
+/* =========================
+   🌷 TULIPÁN
+========================= */
+.tulipan {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+}
+
+
+
+.petal {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 50px; 
+}
+
+/* Colores */
+.tulipan.amarillo .petal {
+    filter:
+        drop-shadow(0 0 6px rgba(255,220,80,.6))
+        drop-shadow(0 0 14px rgba(255,180,0,.5));
+}
+
+.tulipan.rosado .petal {
+    filter:
+        drop-shadow(0 0 8px rgba(255,100,152,.6))
+        drop-shadow(0 0 18px rgba(255,60,130,.5));
+}
+
+/* 💠 Celeste */
+.tulipan.celeste .petal {
+    filter:
+        drop-shadow(0 0 8px rgba(120,210,255,.6))
+        drop-shadow(0 0 18px rgba(60,170,255,.5));
+}
+
+/* 💜 Morado */
+.tulipan.morado .petal {
+    filter:
+        drop-shadow(0 0 8px rgba(190,120,255,.6))
+        drop-shadow(0 0 18px rgba(140,60,220,.5));
+}
+
+.petal.center { 
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.petal.left  { 
+    transform: translateX(-54%) rotate(-18deg); 
+    z-index: 2;
+}
+
+.petal.right { 
+    transform: translateX(-46%) rotate(18deg); 
+    z-index: 1;
+}
+
+/* 🌷 ALTURA DE CADA FLOR SEGÚN SU TALLO */
+/* 🌷 ALTURA DE CADA FLOR SEGÚN SU TALLO */
+
+.t1  .tulipan { bottom: 300px; }
+.t2  .tulipan { bottom: 260px; }
+.t3  .tulipan { bottom: 320px; }
+.t4  .tulipan { bottom: 240px; }
+
+.t5  .tulipan { bottom: 280px; }
+.t6  .tulipan { bottom: 220px; }
+.t7  .tulipan { bottom: 270px; }
+.t8  .tulipan { bottom: 250px; }
+
+.t9  .tulipan { bottom: 310px; }
+.t10 .tulipan { bottom: 230px; }
+.t11 .tulipan { bottom: 290px; }
+.t12 .tulipan { bottom: 260px; }
+
+.t13 .tulipan { bottom: 300px; }
+.t14 .tulipan { bottom: 240px; }
+.t15 .tulipan { bottom: 280px; }
+.t16 .tulipan { bottom: 220px; }
+
+.t17 .tulipan { bottom: 310px; }
+.t18 .tulipan { bottom: 230px; }
+.t19 .tulipan { bottom: 295px; }
+.t20 .tulipan { bottom: 245px; }
+.t21 .tulipan { bottom: 275px; }
+.t22 .tulipan { bottom: 225px; }
+/* 🌷 ALTURA corregida (más bajas) */
+.t23 .tulipan { bottom: 185px; }  /* antes 230px → BAJADA real */
+.t24 .tulipan { bottom: 210px; }  /* antes 270px → bajada moderada */
+
+.t25 .tulipan {
+    bottom: 185px;      /* altura EXACTA que dijiste */
+}
+
+
+/* =========================
+   🎀 LAZO DEL RAMO
+========================= */
+
+.lazo{
+    position:absolute;
+    bottom:-80px;
+    left:50%;
+    transform:translateX(-20%) scale(0.8);
+    width:350px;
+    z-index:20;
+
+    opacity: 0;
+    animation: aparecerLazo 1.0s ease forwards;
+    animation-delay: 0.2s; /* ⏱ espera a hojas y flores */
+}
+
+.lazo img{
+    width:100%;
+    display:block;
+}
+
+@keyframes aparecerLazo {
+    from {
+        opacity: 0;
+        transform: translateX(-38%) translateY(20px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-38%) translateY(0) scale(1);
+    }
+}
+/* =========================
+   🌬 VIENTO NATURAL SIN CRUZARSE
+========================= */
+
+.movimiento {
+    animation: viento 6s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+}
+
+@keyframes viento {
+    from { transform: rotate(-6deg); }
+    to   { transform: rotate(-2deg); }
+}
+
+/* 🌬 Variación natural del viento por tallo */
+.t1  .movimiento { animation-duration: 6s; }
+.t2  .movimiento { animation-duration: 7.5s; }
+.t3  .movimiento { animation-duration: 5.8s; }
+.t4  .movimiento { animation-duration: 6.6s; }
+
+.t5  .movimiento { animation-duration: 6.2s; }
+.t6  .movimiento { animation-duration: 7.8s; }
+.t7  .movimiento { animation-duration: 5.5s; }
+.t8  .movimiento { animation-duration: 6.9s; }
+
+.t9  .movimiento { animation-duration: 6.4s; animation-delay: -0.4s; }
+.t10 .movimiento { animation-duration: 7.2s; animation-delay: -1.1s; }
+.t11 .movimiento { animation-duration: 5.7s; animation-delay: -0.7s; }
+.t12 .movimiento { animation-duration: 6.8s; animation-delay: -1.6s; }
+
+.t13 .movimiento { animation-duration: 6.1s; animation-delay: -0.9s; }
+.t14 .movimiento { animation-duration: 7.4s; animation-delay: -1.3s; }
+.t15 .movimiento { animation-duration: 5.9s; animation-delay: -0.5s; }
+.t16 .movimiento { animation-duration: 6.6s; animation-delay: -1.8s; }
+
+/* 🌷 Nuevos tulipanes */
+.t17 .movimiento { animation-duration: 7.1s; animation-delay: -0.6s; }
+.t18 .movimiento { animation-duration: 6.3s; animation-delay: -1.4s; }
+.t19 .movimiento { animation-duration: 7.6s; animation-delay: -0.8s; }
+.t20 .movimiento { animation-duration: 5.6s; animation-delay: -1.2s; }
+.t21 .movimiento { animation-duration: 6.7s; animation-delay: -0.3s; }
+.t22 .movimiento { animation-duration: 7.3s; animation-delay: -1.7s; }
+.t23 .movimiento { animation-duration: 7.2s; animation-delay: -1.0s; }
+.t24 .movimiento { animation-duration: 6.6s; animation-delay: -0.8s; }
+.t25 .movimiento { animation-duration: 7.0s; animation-delay: -1.1s; }
+
+/* =========================
+   🌸 APERTURA AL HACER CLICK
+========================= */
+
+/* Transición más suave para los pétalos */
+.petal {
+    transition: transform .6s ease;
+}
+
+/* Estado abierto */
+.tulipan.open .petal.left {
+    transform: translateX(-54%) rotate(-30deg);
+}
+
+.tulipan.open .petal.right {
+    transform: translateX(-46%) rotate(30deg);
+}
+
+.tulipan.open .petal.center {
+    transform: translateX(-50%) translateY(-12px) scale(1.05);
+}
+
+/* =========================
+   ✨ FORMACION DE LETRAS
+========================= */
+
+
+
+/* Aparición progresiva */
+.title span:nth-child(1) { animation-delay: 0.3s; }
+.title span:nth-child(2) { animation-delay: 0.6s; }
+.title span:nth-child(3) { animation-delay: 0.9s; }
+.title span:nth-child(4) { animation-delay: 1.2s; }
+.title span:nth-child(5) { animation-delay: 1.5s; }
+.title span:nth-child(6) { animation-delay: 1.8s; }
+.title span:nth-child(7) { animation-delay: 2.1s; }
+
+@keyframes letterAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+#btnMusica {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 20px;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20;
+    transition: .1s ease;
+}
+
+#btnMusica:hover {
+    background: rgba(255,255,255,.2);
+    transform: scale(1.1);
+}
+
+/* === BRILLO CRISTAL === */
+.cristal.brillo {
+    animation: brilloCristal 3s ease-in-out infinite;
+}
+
+@keyframes brilloCristal {
+    0% { box-shadow: inset 0 0 50px rgba(255,255,255,.1),
+                     0 0 15px rgba(255,255,255,.05); }
+
+    50% { box-shadow: inset 0 0 70px rgba(255,255,255,.2),
+                      0 0 35px rgba(255,255,255,.15); }
+
+    100% { box-shadow: inset 0 0 50px rgba(255,255,255,.1),
+                      0 0 15px rgba(255,255,255,.05); }
+}
+
+/* === PARTICULAS === */
+.particula {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,.4);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.particulas-on .particula {
+    animation: flotar 8s linear infinite;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(100vh) scale(.5);
+        opacity: 0;
+    }
+    20% { opacity: .6; }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes cambioColor {
+    0%   { filter: hue-rotate(0deg); }
+    25%  { filter: hue-rotate(40deg); }
+    50%  { filter: hue-rotate(80deg); }
+    75%  { filter: hue-rotate(40deg); }
+    100% { filter: hue-rotate(0deg); }
+}
+
+
+/* ===== OCULTAR RAIZ EN MOVIL ===== */
+@media (max-width: 600px) {
+
+    .cristal {
+        height: 75vh;
+        overflow: hidden;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    /* Recorte visual inferior */
+    .cristal::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 120px; /* ajusta si quieres más recorte */
+        background: black;
+        z-index: 5;
+    }
+
+    #ramo {
+        top: 10%;
+    }
+
+}
+
+/* =========================
+   ☄ COMETAS REALISTAS
+========================= */
+
+.cometas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0; /* detrás del ramo */
+}
+
+.cometa-real {
+    position: absolute;
+    left: -50px;
+    height: 3px;
+    border-radius: 50px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,255,255,0) 0%,
+        rgba(0,255,255,0.8) 50%,
+        rgba(255,255,255,1) 100%
+    );
+
+    /* cabeza luminosa intensa */
+    box-shadow:
+        0 0 6px #00ffff,
+        0 0 12px #00ffff,
+        0 0 25px #00ffff,
+        0 0 40px #00ffff;
+
+    opacity: 1;
+}
+
+/* 🌿 HOJAS QUE APRIETAN EL RAMO */
+.hojas-ramo{
+    position:absolute;
+    bottom:-35px;
+    left:50%;
+    transform:translateX(-10%);
+    width:120px;
+    height:120px;
+    z-index:6;
+}
+
+.hoja-centro{
+    position:absolute;
+    width:80px;
+    opacity:.9;
+
+    clip-path: inset(100% 0 0 0);
+    animation: brotar 1.20s ease-out forwards;
+
+}
+
+@keyframes brotar{
+    from{
+        clip-path: inset(100% 0 0 0);
+        opacity:0;
+    }
+    to{
+        clip-path: inset(0 0 0 0);
+        opacity:.9;
+    }
+}
+
+/* Pegadas al centro, abrazando */
+.h1{
+    left:-40px;
+    bottom:0px;
+    width: 95px;
+    transform:rotate(-40deg);
+    animation-delay:0.15s;
+}
+
+.h2{
+    left:-10px;
+    bottom:0;
+    width: 95px;
+    transform:rotate(-15deg); 
+    animation-delay:0.25s;
+}
+
+.h3{
+    left:30px;
+    bottom:5px;
+    width: 95px;
+    transform:rotate(20deg);
+    animation-delay:0.35s;
+}
+
+.h4{
+    left:55px;
+    bottom:0px;
+    width: 95px;
+    transform:rotate(40deg);
+    animation-delay:0.45s;
+}
+
+.h5{
+    left:-55px;
+    bottom:0px;
+    transform:rotate(-55deg);
+    animation-delay:0.55s;
+}
+
+.h6{
+    left:-25px;
+    bottom:0px;
+    transform:rotate(-25deg);
+    animation-delay:0.55s;
+}
+
+.h7{
+    left:10px;
+    bottom:0px;
+    transform:rotate(5deg);
+    animation-delay:0.15s;
+}
+
+.h8{
+    left:40px;
+    bottom:0px;
+    transform:rotate(30deg);
+    animation-delay:0.35s;
+}
+
+.h9{
+    left:65px;
+    bottom:0px;
+    transform:rotate(55deg);
+    animation-delay:0.25s;
+}
+
+.h10{
+    left:0px;
+    bottom:0px;
+    transform:rotate(0deg);
+    animation-delay:0.35s;
+}
+
+.h11{
+    left:-55px;
+    bottom:0px;          /* sube un poco */    /* más larga */
+    transform:rotate(-35deg);
+    animation-delay:0.15s;
+}
+
+.h12{
+    left:65px;
+    bottom:0px;
+    transform:rotate(35deg);
+    animation-delay:0.15s;
+}
+
+.crecer{
+    transform-origin: bottom center;
+    transform: scaleY(0);
+    animation: crecerRamo 3.75s ease-out forwards;
+}
+
+@keyframes crecerRamo{
+    from{
+        transform: scaleY(0);
+        opacity:0;
+    }
+    to{
+        transform: scaleY(1);
+        opacity:1;
+    }
+}
