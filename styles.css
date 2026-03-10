@@ -31,8 +31,7 @@ body::before {
 @media (max-width: 600px) {
 
     body::before {
-        background: url("galaxia.svg") center / contain no-repeat;
-        background-color: black; /* rellena los lados */
+        background: url("galaxia.svg") center 25% / cover no-repeat;
     }
 
 }
