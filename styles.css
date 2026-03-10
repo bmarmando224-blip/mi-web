@@ -17,15 +17,13 @@ body:not(.iniciado) * {
     animation-play-state: paused !important;
 }
 
-/* Galaxia solo mitad superior */
+
+    /* Fondo galaxia pantalla completa */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url("galaxia.svg") top center / cover no-repeat;
+    inset: 0; /* ocupa toda la pantalla */
+    background: url("galaxia.svg") center / cover no-repeat;
     z-index: -1;
     pointer-events: none;
 }
@@ -683,9 +681,9 @@ img {
     /* 🔥 Ajuste REAL del ramo en móvil */
     #ramo {
     top: auto;
-    bottom: 120px;                 /* lo sube un poco desde abajo */
+    bottom: 100px;                 /* lo sube un poco desde abajo */
     left: 50%;
-    transform: translateX(-60%) scale(0.75);
+    transform: translateX(-60%) scale(0.85);
    }
 
 }
