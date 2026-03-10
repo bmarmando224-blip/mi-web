@@ -681,9 +681,9 @@ img {
     /* 🔥 Ajuste REAL del ramo en móvil */
     #ramo {
     top: auto;
-    bottom: 130px;                 /* lo sube un poco desde abajo */
+    bottom: 150px;                 /* lo sube un poco desde abajo */
     left: 50%;
-    transform: translateX(-62%) scale(0.9);
+    transform: translateX(-65%) scale(0.9);
    }
 
 }
