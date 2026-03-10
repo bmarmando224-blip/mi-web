@@ -28,6 +28,15 @@ body::before {
     pointer-events: none;
 }
 
+@media (max-width: 600px) {
+
+    body::before {
+        background: url("galaxia.svg") center / contain no-repeat;
+        background-color: black; /* rellena los lados */
+    }
+
+}
+
 img {
     user-select: none;
     pointer-events: none;
