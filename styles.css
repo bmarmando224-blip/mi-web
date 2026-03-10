@@ -680,8 +680,12 @@ img {
         z-index: 5;
     }
 
+    /* 🔥 Ajuste REAL del ramo en móvil */
     #ramo {
-        top: 10%;
+        top: auto;                     /* ❌ Ya no usar top */
+        bottom: 0;                     /* ✔ Mantenerlo abajo */
+        left: 50%;
+        transform: translateX(-50%) scale(0.75); /* ✔ Centrado + tamaño móvil */
     }
 
 }
