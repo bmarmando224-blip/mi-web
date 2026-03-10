@@ -683,7 +683,7 @@ img {
     top: auto;
     bottom: 100px;                 /* lo sube un poco desde abajo */
     left: 50%;
-    transform: translateX(-60%) scale(0.85);
+    transform: translateX(-60%) scale(0.9);
    }
 
 }
