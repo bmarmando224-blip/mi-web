@@ -682,11 +682,11 @@ img {
 
     /* 🔥 Ajuste REAL del ramo en móvil */
     #ramo {
-        top: auto;                     /* ❌ Ya no usar top */
-        bottom: 0;                     /* ✔ Mantenerlo abajo */
-        left: 50%;
-        transform: translateX(-50%) scale(0.75); /* ✔ Centrado + tamaño móvil */
-    }
+    top: auto;
+    bottom: 35px;                 /* lo sube un poco desde abajo */
+    left: 50%;
+    transform: translateX(-50%) scale(0.75);
+   }
 
 }
 
